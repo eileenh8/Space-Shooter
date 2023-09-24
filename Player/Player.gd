@@ -4,7 +4,7 @@ extends CharacterBody2D
 var speed = 5
 var max_speed = 400
 var rotate_speed = 0.08
-var nose = Vector2(0,-60)
+var nose = Vector2(0,-50)
 var health = 10
 var Bullet = load("res://Player/bullet.tscn")
 var Effects = null
@@ -26,8 +26,8 @@ func _physics_process(_delta):
 	velocity += get_input()*speed
 	velocity = velocity.normalized() *  clamp(velocity.length(), 0, max_speed)
 	
-	position.x = wrapf(position.x, 0, 1152)
-	position.y = wrapf(position.y, 0, 648)
+	position.x = wrapf(position.x, 0, Global.VP.x)
+	position.y = wrapf(position.y, 0, Global.VP.y)
 	velocity = velocity.normalized() * clamp(velocity.length(), 0, max_speed)
 	
 	move_and_slide()
@@ -50,6 +50,7 @@ func damage(d):
 			explosion.global_position = global_position
 			hide()
 			await explosion.animation_finished
+		Global.update_lives(-1)
 		queue_free()
 
 func _on_area_2d_body_entered(body):
