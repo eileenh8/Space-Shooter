@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cl0n0y5pndnpr"]
+[gd_scene load_steps=12 format=3 uid="uid://cl0n0y5pndnpr"]
 
 [ext_resource type="PackedScene" uid="uid://c2c8ajposm5fh" path="res://Player/player.tscn" id="1_m2ew4"]
+[ext_resource type="Texture2D" uid="uid://c16g6131k52ke" path="res://BackgroundImage.jpg" id="1_sad5u"]
 [ext_resource type="Script" path="res://Player/Player_Container.gd" id="2_1lnv3"]
 [ext_resource type="PackedScene" uid="uid://bi7e7epbyw5yl" path="res://Asteroid/asteroid.tscn" id="2_382f6"]
 [ext_resource type="PackedScene" uid="uid://0ghb4gl1p7pl" path="res://Enemy/enemy.tscn" id="3_s0dv2"]
@@ -8,8 +9,15 @@
 [ext_resource type="Script" path="res://UI/HUD.gd" id="5_g22ol"]
 [ext_resource type="Script" path="res://UI/Menu.gd" id="7_vh0fd"]
 [ext_resource type="FontFile" uid="uid://bwt601r8sqfqe" path="res://Assets/Hyperspace.otf" id="8_241fb"]
+[ext_resource type="AudioStream" uid="uid://djccakvhfmwha" path="res://Assets/music.mp3" id="10_8fjfr"]
+[ext_resource type="AudioStream" uid="uid://dffe2nfvwv8l1" path="res://Assets/shooting_sound.wav" id="11_a3dyl"]
 
 [node name="Game" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(1.07963, 0.930362)
+texture = ExtResource("1_sad5u")
+centered = false
 
 [node name="Asteroid_Container" type="Node2D" parent="."]
 
@@ -146,6 +154,13 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_0y7ci")
 theme_override_font_sizes/font_size = 20
 text = "Quit"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_8fjfr")
+autoplay = true
+
+[node name="Bullet Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_a3dyl")
 
 [connection signal="timeout" from="UI/HUD/Timer" to="UI/HUD" method="_on_timer_timeout"]
 [connection signal="pressed" from="UI/Menu/Restart" to="UI/Menu" method="_on_restart_pressed"]

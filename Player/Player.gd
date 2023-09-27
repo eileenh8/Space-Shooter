@@ -10,6 +10,8 @@ var Bullet = load("res://Player/bullet.tscn")
 var Effects = null
 var Explosion = load("res://Effects/explosion.tscn")
 
+var Bullet_Sound = null
+
 func get_input():
 	var to_return = Vector2.ZERO
 	$Exhaust.hide()
@@ -38,6 +40,9 @@ func _physics_process(_delta):
 		bullet.rotation = rotation
 		var Effects = get_node_or_null("/root/Game/Effects")
 		if Effects != null:
+			Bullet_Sound = get_node_or_null("/root/Game/Bullet_Sound")
+			if Bullet_Sound != null:
+				Bullet_Sound.play()
 			Effects.add_child(bullet)
 
 func damage(d):
