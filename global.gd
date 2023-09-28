@@ -4,6 +4,28 @@ var VP = Vector2.ZERO
 var score = 0 
 var lives = 0
 var time = 0
+var level = -1
+
+var levels = [
+	{
+		"title":"Level 1",
+		"subtitle":"Destroy the asteroids!",
+		"asteroids":[Vector2(100,100),Vector2(900,500)],
+		"enemies": [],
+		"timer":100,
+		"asteroids_spawned":false,
+		"enemies_spawned":false,
+	},
+	{
+		"title":"Level 2",
+		"subtitle":"Destroy the asteroids and watch out for the enemy!",
+		"asteroids":[Vector2(100,100),Vector2(900,500),Vector2(800,200)],
+		"enemies": [Vector2(150,500)],
+		"timer":80,
+		"asteroids_spawned":false,
+		"enemies_spawned":false,
+	}
+]
 
 func _ready():
 	process_mode + Node.PROCESS_MODE_ALWAYS
@@ -12,6 +34,13 @@ func _ready():
 	var _signal = get_tree().get_root().size_changed.connect(_resize)
 	reset()
 
+func _physics_process(delta):
+	var A = get_node_or_null("/root/Game/Asteroid_Container")
+	var E = get_node_or_null("/root/Game/Enemy_Container")
+	if A != null and E != null:
+		var L = levels[level]
+		if L["asteroids_spawned"] and A.get_child_count() == 0 and L["enemies_spawned"] and E.get_child_count() == 0:
+			next_level()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("Quit"):
@@ -55,9 +84,22 @@ func _resize():
 	if hud != null:
 		hud.update_lives()
 
-
 func reset():
 	get_tree().paused = false
 	score = 0
 	time = 30
 	lives = 5
+	level = -1
+	for l in levels:
+		l["asteroids_spawned"] = false
+		l["enemies_spawned"] = false 
+
+
+func next_level():
+	level += 1
+	if level >= levels.size():
+		var _scene = get_tree().change_scene_to_file("res://UI/end_game.tscn")
+	else:
+		var Level_Lable = get_node_or_null("/root/Game/UI/Level")
+		if Level_Lable != null:
+			Level_Lable.show_lables()
