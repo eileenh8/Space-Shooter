@@ -34,7 +34,7 @@ func _ready():
 	var _signal = get_tree().get_root().size_changed.connect(_resize)
 	reset()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var A = get_node_or_null("/root/Game/Asteroid_Container")
 	var E = get_node_or_null("/root/Game/Enemy_Container")
 	if A != null and E != null:
