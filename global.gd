@@ -56,10 +56,7 @@ func _process(_delta):
 				get_tree().paused = true
 				menu.show()
 	var Asteroid_Container = get_node_or_null("/root/Game/Asteroid_Container")
-	var Enemy_Container = get_node_or_null("/root/Game/Enemy_Container")
-	if Asteroid_Container != null and Enemy_Container != null:
-		if Asteroid_Container.get_child_count() == 0 and Enemy_Container.get_child_count() == 0:
-			get_tree().change_scene_to_file("res://UI/end_game.tscn")
+	get_tree().change_scene_to_file("res://UI/end_game.tscn")
 
 
 func update_lives(l):
