@@ -56,8 +56,7 @@ func _process(_delta):
 				get_tree().paused = true
 				menu.show()
 	var Asteroid_Container = get_node_or_null("/root/Game/Asteroid_Container")
-	get_tree().change_scene_to_file("res://UI/end_game.tscn")
-
+	
 
 func update_lives(l):
 	lives += l
