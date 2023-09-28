@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvjjcoxuorubk"]
+
+[ext_resource type="Script" path="res://UI/selector.gd" id="1_bswsx"]
+[ext_resource type="FontFile" uid="uid://bwt601r8sqfqe" path="res://Assets/Hyperspace.otf" id="1_wju0a"]
+[ext_resource type="Texture2D" uid="uid://evang5wgx16o" path="res://Assets/ship_B.png" id="2_dd04t"]
+[ext_resource type="Texture2D" uid="uid://rbi6un0vvynl" path="res://Assets/Player.png" id="3_a2v3e"]
+[ext_resource type="Texture2D" uid="uid://cswnm8re2hy0h" path="res://Assets/ship_G.png" id="4_n7xsv"]
+
+[node name="Selector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bswsx")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -248.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_wju0a")
+theme_override_font_sizes/font_size = 80
+text = "Select your ship"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShipB" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+texture_normal = ExtResource("2_dd04t")
+
+[node name="PlayerShip" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("3_a2v3e")
+
+[node name="ShipG" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("4_n7xsv")
+
+[connection signal="pressed" from="ShipB" to="." method="_on_ship_b_pressed"]
+[connection signal="pressed" from="PlayerShip" to="." method="_on_player_ship_pressed"]
+[connection signal="pressed" from="ShipG" to="." method="_on_ship_g_pressed"]
