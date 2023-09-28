@@ -28,7 +28,7 @@ var levels = [
 ]
 
 func _ready():
-	process_mode + Node.PROCESS_MODE_ALWAYS
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	randomize()
 	VP = get_viewport().size
 	var _signal = get_tree().get_root().size_changed.connect(_resize)
