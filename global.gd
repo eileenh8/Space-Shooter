@@ -21,7 +21,7 @@ var levels = [
 		"title":"Level 2",
 		"subtitle":"Destroy the asteroids and watch out for the enemy!",
 		"asteroids":[Vector2(100,100),Vector2(900,500),Vector2(800,200)],
-		"enemies": [Vector2(150,500)],
+		"enemies": [Vector2(150,500),Vector2(400,600)],
 		"timer":80,
 		"asteroids_spawned":false,
 		"enemies_spawned":false,
@@ -94,6 +94,7 @@ func reset():
 
 func next_level():
 	level += 1
+	time = 30
 	if level >= levels.size():
 		var _scene = get_tree().change_scene_to_file("res://UI/end_game.tscn")
 	else:

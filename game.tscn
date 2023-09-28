@@ -1,6 +1,5 @@
-[gd_scene load_steps=16 format=3 uid="uid://cl0n0y5pndnpr"]
+[gd_scene load_steps=15 format=3 uid="uid://cl0n0y5pndnpr"]
 
-[ext_resource type="PackedScene" uid="uid://c2c8ajposm5fh" path="res://Player/player.tscn" id="1_m2ew4"]
 [ext_resource type="Texture2D" uid="uid://c16g6131k52ke" path="res://BackgroundImage.jpg" id="1_sad5u"]
 [ext_resource type="Script" path="res://Enemy/Game/game.gd" id="1_v8ogj"]
 [ext_resource type="Script" path="res://Player/Player_Container.gd" id="2_1lnv3"]
@@ -37,9 +36,6 @@ position = Vector2(900, 600)
 
 [node name="Player_Container" type="Node2D" parent="."]
 script = ExtResource("2_1lnv3")
-
-[node name="Player" parent="Player_Container" instance=ExtResource("1_m2ew4")]
-position = Vector2(576, 324)
 
 [node name="Enemy_Container" type="Node2D" parent="."]
 script = ExtResource("7_f86jn")

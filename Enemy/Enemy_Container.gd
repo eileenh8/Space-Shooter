@@ -7,7 +7,7 @@ func _physics_process(_delta):
 		var level = Global.levels[Global.level]
 		if not level["enemies_spawned"]:
 			for pos in level["enemies"]:
-				var enemy = Enemy.instance()
+				var enemy = Enemy.instantiate()
 				enemy.position = pos
 				add_child(enemy)
 			level["enemies_spawned"] = true
